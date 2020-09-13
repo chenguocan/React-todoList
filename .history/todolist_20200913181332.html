@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<body>
+    <div class="test"></div>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/prop-types.js"></script>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+        class App extends React.Component {
+            state = {
+                todoArr: ["吃饭", "睡觉", "学习"]
+            }
+            render() {
+                return (
+                    <div>
+                        <h1>Simplify TodoList</h1>
+                        <Add />
+                        <List todoList={state.todoArr} />
+                    </div>
+                )
+            }
+        }
+        class Add extends React.Component {
+
+            render() {
+                return (
+                    <div>
+                        <input type="text" />
+                        <button>Add #100</button>
+                    </div>
+                )
+            }
+        }
+
+        class List extends React.Component {
+            render() {
+                console.log(this.props);
+                return (
+                    <div>
+                        <ul>
+                            <li>吃饭</li>
+                            <li>睡觉</li>
+                            <li>学习</li>
+                        </ul>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector(".test"));
+
+    </script>
+</body>
+
+</html>

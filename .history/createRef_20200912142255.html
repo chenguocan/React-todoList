@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div class="test"></div>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/prop-types.js"></script>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+        class MyComponent extends React.Component {
+            constructor() {
+                super();
+            }
+            //调用React.createRef创建了一个用于保存ref的容器------只能保存一个ref
+            myRef = React.createRef();//"一个容器"--Object类型的js对象;
+            clickMe = () => {
+                console.log(this.myRef.input.value
+                );
+            }
+            blurHandel = (event) => {
+                window.alert(event.target.value);
+            }
+            render() {
+                return (
+                    <div>
+                        <input type="text" ref={this.myRef} />
+                        <button onClick={this.clickMe}>点我提示数据</button>
+                        <input type="text" placeholder="失去焦点提示" onBlur={this.blurHandel} />
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<MyComponent />, document.querySelector(".test"))
+
+    </script>
+</body>
+
+</html>

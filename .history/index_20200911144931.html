@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+</head>
+
+<body>
+    <div class="test">
+        <div class="example1"></div>
+        <div class="example1"></div>
+    </div>
+
+    <script src="./js/babel.min.js"></script>
+    <script src="js/react.development.js"></script>
+    <script src="js/react-dom.development.js"></script>
+    <script type="text/babel">
+        function MyComponent() {
+            return <h1>Hello</h1>
+        }
+        ReactDOM.render(<MyComponent />, document.querySelector(".example1"));
+        class Component extends React.Component {
+
+            render() {
+                <div>
+                    <h1>111111</h1>
+                </div>
+            }
+        }
+        ReactDOM.render(<Component />, document.querySelector(".example1"));
+    </script>
+</body>
+
+</html>

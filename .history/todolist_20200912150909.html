@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="test"></div>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/prop-types.js"></script>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+        class Title extends React.Component {
+            constructor() {
+                super()
+            }
+            render() {
+                return (
+                    <div>
+                        <h1>Simple TODO List</h1>
+                    </div>
+                )
+            }
+        }
+
+        class MessageInput extends React.Component {
+            constructor() {
+                super();
+            }
+            myClick = () => {
+                console.log("myClick");
+            }
+            render() {
+                return (
+                    <div>
+                        <input type="text" />
+                        <button onClick={this.myClick}>Add</button>
+                    </div>
+                )
+            }
+        }
+
+        class List extends React.Component {
+            constructor() {
+                super()
+            }
+            render() {
+                return (
+                    <div>
+                        <ul>
+
+                        </ul>
+                    </div>
+                )
+            }
+        }
+
+        class View extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <Title />
+                        <MessageInput />
+                        <List />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<View />, document.querySelector(".test"));
+
+    </script>
+</body>
+
+</html>

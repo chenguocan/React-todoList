@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+
+<body>
+    <div class="test"></div>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/prop-types.js"></script>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+        class App extends React.Component {
+            state = {
+                todoArr: ["吃饭", "睡觉", "学习"]
+            }
+            add = (data) => {
+                let myData = this.state.todoArr;
+                myData.unshift(data);
+                this.setState({ todoArr: myData });
+            }
+            render() {
+                return (
+                    <div>
+                        <h1>Simplify TodoList</h1>
+                        <Add add={this.add} todoList={this.state.todoArr} />
+                        <List todoList={this.state.todoArr} />
+                    </div>
+                )
+            }
+        }
+        class Add extends React.Component {
+            add = () => {
+                let userInput = this.input.value;
+                this.props.add(userInput);
+                if (userInput.trim() === "") {
+                    return;
+                }
+                this.input.value = "";
+            }
+            render() {
+                return (
+                    <div>
+                        <input type="text" ref={(input) => this.input = input} />
+                        <button onClick={this.add}>Add #{this.props.todoList.length}</button>
+                    </div>
+                )
+            }
+        }
+
+        class List extends React.Component {
+            render() {
+                let { todoList } = this.props;
+                return (
+                    <div>
+                        <ul>
+                            {todoList.map((item, index) => <li key={index}>{item}</li>)}
+                        </ul>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector(".test"));
+
+    </script>
+</body>
+
+</html>

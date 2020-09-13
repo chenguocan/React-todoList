@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="test"></div>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/prop-types.js"></script>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+        class Title extends React.Component {
+            constructor() {
+                super()
+            }
+            render() {
+                return (
+                    <div>
+                        <h1>Simple TODO List</h1>
+                    </div>
+                )
+            }
+        }
+
+        class MessageInput extends React.Component {
+            state = { nameList: [] };
+            myRef = React.createRef();
+            person = ["1", "2", "3", "4", "5"];
+            myClick = () => {
+                this.person.push(this.myRef.current.value);
+                // this.setState = ({ name: this.state.name.push(this.person) });
+                // console.log(this.state);
+            }
+            render() {
+                return (
+                    <div>
+                        <input type="text" ref={this.myRef} />
+                        <button onClick={this.myClick}>Add</button>
+                        <List name={this.person} />
+                    </div>
+                )
+            }
+        }
+
+        class List extends React.Component {
+            constructor() {
+                super();
+            }
+            render() {
+                const { name } = this.props;
+                return (
+                    <div>
+                        <ul>
+                            {
+                                name.map(item => item)
+                            }
+                        </ul>
+                    </div>
+                )
+            }
+        }
+
+        class View extends React.Component {
+            render() {
+                return (
+                    <div>
+                        <Title />
+                        <MessageInput />
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(<View />, document.querySelector(".test"));
+
+    </script>
+</body>
+
+</html>

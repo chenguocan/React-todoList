@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+    <style>
+        .demo {
+            cursor: pointer;
+            border: 1px solid red;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="test"> </div>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+        class Weather extends React.Component {
+            constructor() {
+                super();
+                this.state = { isHot: true }
+                this.demo = this.demo.bind(this);
+            }
+            demo() {
+                let { isHot } = this.state
+                this.setState({ isHot: !isHot })
+            }
+            render() {
+                return
+                <h2 className="demo" onClick={this.demo}>今天天气很{this.state ? "炎热" : "凉爽"}</h2>
+
+            }
+        }
+        ReactDOM.render(<Weather />, document.querySelector(".test"));
+    </script>
+</body>
+
+</html>

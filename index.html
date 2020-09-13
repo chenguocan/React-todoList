@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello_react</title>
+</head>
+
+<body>
+    <div class="test"> </div>
+    <div class="test2"></div>
+    <script src="./js/babel.min.js"></script>
+    <script src="./js/prop-types.js"></script>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script type="text/babel">
+        class Person extends React.Component {
+            static propTypes = {
+                name: PropTypes.string.isRequired,
+                age: PropTypes.number.isRequired,
+                sex: PropTypes.string.isRequired,
+            }
+            static defaultProps = {
+                age: 18,
+                sex: "",
+            }
+            constructor() {
+                super();
+                this.state = { name: "12312", age: "18" }
+                console.log(this);
+            }
+            render() {
+                let { name, sex, age } = this.props;
+                return (
+                    <ul>
+                        <li>姓名:{name}</li>
+                        <li>性别:{sex}</li>
+                        <li>年龄:{age}</li>
+                    </ul>
+                )
+            }
+        }
+        let person = {
+            name: "keeee",
+            age: "18",
+        }
+        ReactDOM.render(<Person {...person} />, document.querySelector(".test"));
+/*        ReactDOM.render(<Person name="chen" />, document.querySelector(".test2"));*/
+    </script>
+</body>
+
+</html>
